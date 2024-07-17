@@ -8,9 +8,10 @@
 
   const { address } = $derived.by(createAccount());
 
-  let { contractName, spender } = $props<{
+  let { contractName, spender, balance } = $props<{
     contractName: "CBDC" | "WCBDC" | "wCBDCwETHLP";
     spender: "WCBDC" | "xStakingPool" | "lpStakingPool";
+    balance?: BigInt;
   }>();
 
   const { data: contract } = $derived.by(createDeployedContractInfo(contractName));
@@ -43,7 +44,7 @@
   }
 </script>
 
-{#if !cbdcAllowance || cbdcAllowance <= 0n}
+{#if !cbdcAllowance || cbdcAllowance < balance}
   {console.log(cbdcAllowance, contract?.address)}
   <button class="secondary" on:click={handleApprove} disabled={isMining}>
     {#if isMining}

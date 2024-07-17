@@ -45,6 +45,7 @@
     <Approve
       contractName={contractName == "lpStakingPool" ? "wCBDCwETHLP" : contractName == "WCBDC" ? "CBDC" : "WCBDC"}
       spender={contractName}
+      {balance}
     />
   {/if}
 
