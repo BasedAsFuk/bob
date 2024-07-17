@@ -23,7 +23,7 @@
     createScaffoldReadContract(() => ({ contractName: "xStakingPool", functionName: "balanceOf", args: [address] })),
   );
 
-  const { data: pricePerShare } = $derived.by(
+  const { data: pricePerShare, refetch: refetchPPS } = $derived.by(
     createScaffoldReadContract(() => ({
       contractName: "xStakingPool",
       functionName: "getPricePerFullShare",
@@ -77,10 +77,9 @@
     >{(Number(xcbdcBalance) * 1e-18).toFixed(4)}</span
   >
   <span class="stat-title">
-		Underlying wCBDC: <br />
-		<span class="stat-value">{(Number(xcbdcBalance) * 1e-18 * (Number(pricePerShare) * 1e-18)).toFixed(4)}</span>
-	</span
-  >
+    Underlying wCBDC: <br />
+    <span class="stat-value">{(Number(xcbdcBalance) * 1e-18 * (Number(pricePerShare) * 1e-18)).toFixed(4)}</span>
+  </span>
 </div>
 <div class="form-control">
   <span class="label-text">Percentage</span>
