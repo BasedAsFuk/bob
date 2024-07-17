@@ -209,7 +209,7 @@
 			<div class="contract_info">
 				<span class="need_token_text">CBDC Token Balance required to Use UPPIFIER Button</span>
 				{#if percentDestroyed}
-				<span class="supply">{`The supply has been reduced by ${percentDestroyed}%`}</span>
+					<span class="supply">{`The supply has been reduced by ${percentDestroyed}%`}</span>
 				{/if}
 			</div>
 		</div>
@@ -366,6 +366,11 @@
 	.text > p {
 		margin: 0;
 		padding: 0;
+	}
+
+	.text {
+		line-height: 1.2;
+		padding: 0.3em 0;
 	}
 
 	.dialogue p.name {
